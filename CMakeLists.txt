@@ -3,4 +3,8 @@ project(untitled)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(untitled main.cpp)
+add_executable(untitled main.cpp
+        Project.cpp
+        Project.h
+        Creativity.cpp
+        Creativity.h)
