@@ -25,6 +25,10 @@ public:
 
     MonopolySpace(string propertyName, string propertyColor, int value, int rent) {
         /* TODO: Define overloaded constructor here */
+        this->propertyName = propertyName;
+        this->propertyColor = propertyColor;
+        this->rent = rent;
+        this->value = value;
     }
 
     bool isEqual(MonopolySpace other) {
