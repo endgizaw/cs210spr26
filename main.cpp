@@ -166,7 +166,7 @@ private:
     // Optional helper: print full board once (one full cycle)
     void printBoardOnce() {
     // TODO:
-    // - Traverse exactly one full cycle and print each node
+    // - Traverse exactly one full cycle and print each node.
     cout << "printBoardOnce unwritten" << endl;
     }
     // -------------------------------

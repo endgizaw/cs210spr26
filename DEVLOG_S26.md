@@ -1,7 +1,7 @@
 # Developer Log (DEVLOG.md)
 ## Monopoly Board Simulator (Spring 2026)
 
-Minimum **6 entries** required.
+Minimum **6 entries** required
 
 Each entry must document learning and reasoning. Fabricated bugs are not expected.
 
