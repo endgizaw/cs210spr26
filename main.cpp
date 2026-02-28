@@ -23,12 +23,20 @@ public:
     }
     MonopolySpace(string propertyName, string propertyColor, int value, int rent) {
         /* TODO: Define overloaded constructor here */
+        this -> propertyName = propertyName;
+        this -> propertyColor = propertyColor;
+        this -> value = value;
+        this -> rent = rent;
     }
     bool isEqual(MonopolySpace other) {
+        if (this -> propertyName == other.propertyName) {
+            return true;
+        }
         /* TODO: Define isEqual here (compare by name is fine if you enforce uniqueness) */
         return false;
     }
     void print() {
+        cout << propertyName << ", " << propertyColor << ", " << value << ", "<< rent;
         /* TODO: Define print here */
         // Example style:
         // cout << propertyName << " | " << propertyColor << " | $" << value << " |Rent " << rent;
@@ -37,15 +45,14 @@ public:
 // -------------------------------
 // Template Node class (NOT a struct)
 // -------------------------------
-template <typename T>
-class Node {
+template <typename T> class Node {
 public:
-T data;
-Node<T>* nextNode;
-Node(T value) {
-data = value;
-nextNode = nullptr;
-}
+    T data;
+    Node<T>* nextNode;
+    Node(T value) {
+    data = value;
+    nextNode = nullptr;
+    }
 };
 // -------------------------------
 // Template Circular Linked List class
@@ -81,31 +88,58 @@ private:
     // Core A: Add a Space with Capacity Enforcement
     // -------------------------------
     bool addSpace(T value) {
+        if (nodeCount == MAX_SPACES) {
+            return false;
+        }
+        Node<T>* newNode = new Node<T>(value);
+        nodeCount++;
+        if (nodeCount == 0) {
+            headNode = tailNode = playerNode = newNode;
+            newNode->nextNode=headNode;
+        }else {
+            tailNode->nextNode=newNode;
+            tailNode=newNode;
+            tailNode->nextNode=headNode;
+        }
+
         // TODO:
         // - If nodeCount == MAX_SPACES return false (do not corrupt list)
         // - Create new node
         // - If empty list: head=tail=player=new, new->next=head
         // - Else: tail->next=new, tail=new, tail->next=head
         // - nodeCount++
-        cout << "addSpace unwritten" << endl;
-        return false;
+        cout << "addSpace written" << endl;
+        return true;
     }
     // -------------------------------
     // Core B: Add Multiple Spaces at Once
     // -------------------------------
     int addMany(vector<T> values) {
+        int temp = 0;
+        while (nodeCount < MAX_SPACES) {
+            Node<T>* newNode = new Node<T>(values);
+            temp++;
+            nodeCount++;
+        }
         // TODO:
         // - Add sequentially until full
         // - Stop exactly when you reach MAX_SPACES
         // - Return number successfully added
         // - Do not corrupt pointers if capacity is exceeded
         cout << "addMany unwritten" << endl;
-    return 0;
+    return temp;
     }
     // -------------------------------
     // Core C: Traversal-Based Player Movement
     // -------------------------------
     void movePlayer(int steps) {
+        for (int i = 0; i < steps; i++) {
+            playerNode->nextNode = playerNode;
+            if (playerNode == tailNode) {
+                playerNode-> nextNode = playerNode;
+                passGoCount++;
+            }
+        }
         // TODO:
         // - Move playerNode forward 'steps' times, node-by-node
         // - Wrap naturally because list is circular
@@ -121,6 +155,7 @@ private:
     // Core D: Controlled Board Display
     // -------------------------------
     void printFromPlayer(int count) {
+
         // TODO:
         // - Print exactly 'count' nodes starting from playerNode
         // - Must not infinite loop
