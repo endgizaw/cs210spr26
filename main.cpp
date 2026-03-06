@@ -136,7 +136,7 @@ private:
         for (int i = 0; i < steps; i++) {
             playerNode->nextNode = playerNode;
             if (playerNode == tailNode) {
-                playerNode-> nextNode = playerNode;
+                playerNode-> nextNode = headNode;
                 passGoCount++;
             }
         }
@@ -155,16 +155,25 @@ private:
     // Core D: Controlled Board Display
     // -------------------------------
     void printFromPlayer(int count) {
-
+        count = 1;
+        if (!playerNode) {
+            return;
+        }
+        Node<T>* temp = playerNode->nextNode;
+        while (temp != headNode) {
+            count++;
+            temp = temp->nextNode;
+        }
         // TODO:
         // - Print exactly 'count' nodes starting from playerNode
         // - Must not infinite loop
         // - Must handle empty list
         // - Output must be deterministic and readable
-        cout << "printFromPlayer unwritten" << endl;
+        cout << count << " spaces from player to end!" << endl;
     }
     // Optional helper: print full board once (one full cycle)
     void printBoardOnce() {
+        addMany(MAX_SPACES);
     // TODO:
     // - Traverse exactly one full cycle and print each node.
     cout << "printBoardOnce unwritten" << endl;
@@ -173,6 +182,33 @@ private:
     // Advanced Option A (Level 1): removeByName
     // -------------------------------
     bool removeByName(string name) {
+        if (headNode == nullptr) {
+            return false;
+        }
+        Node<T>* space = headNode;
+        Node<T>* after = nullptr;
+        if (headNode-> propertyName == name) {
+            Node<T>* temp = headNode;
+            headNode = headNode->nextNode;
+            tailNode->nextNode = headNode;
+            delete temp;
+            return true;
+        }
+        //handle deleting tail
+        do {
+
+        }
+        do {
+            after = space;
+            space = space->nextNode;
+            if (space->propertyName == name) {
+                after->nextNode = space->nextNode;
+                delete space;
+                return true;
+            }
+        }
+        while (space != headNode);
+
     // TODO:
     // - Delete FIRST matching node
     // - Must handle:
@@ -189,6 +225,15 @@ private:
     // Advanced Option A (Level 1): findByColor
     // -------------------------------
     vector<string> findByColor(string color) {
+        //use peek
+        vector
+        Node<T> temp = playerNode->nextNode;
+        while ()
+        //create vector<string> matches
+        //while not headNode
+        //if currentnode(name) = nextnode(name)
+        //add to vector
+        //node->next = node
     // TODO:
     // - Traverse ring exactly once
     // - Collect matching names in vector<string>
@@ -212,11 +257,19 @@ private:
     // Edge-case helper: countSpaces O(n)
     // -------------------------------
     int countSpaces() {
+        int spacecount = 0;
+        for (int i = 0; i < MAX_SPACES; i++) {
+            if (//condition to check for node in space)
+                spacecount++;
+        }
+        //start from head
+        //if there is a node
+        //spacecount++
     // TODO:
     // - Must be O(n), traverse exactly once with correct stop condition
     // - Do NOT rely on nodeCount for this method
     cout << "countSpaces unwritten" << endl;
-    return 0;
+    return spacecount;
     }
     // -------------------------------
     // Cleanup
@@ -224,8 +277,7 @@ private:
     void clear() {
     // TODO:
     // - Safely delete all nodes
-    // - Tip: if tailNode exists, break the cycle first: tailNode->nextNode =
-    nullptr
+    // - Tip: if tailNode exists, break the cycle first: tailNode->nextNode = nullptr
     // - Then delete like a normal singly linked list
     cout << "clear unwritten" << endl;
     }
