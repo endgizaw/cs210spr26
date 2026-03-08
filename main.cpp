@@ -186,22 +186,37 @@ private:
             return false;
         }
         Node<T>* space = headNode;
-        Node<T>* after = nullptr;
-        if (headNode-> propertyName == name) {
+        Node<T>* after = headNode->nextNode;
+        if (headNode-> data.propertyName == name) {
             Node<T>* temp = headNode;
+            if (playerNode == headNode) {
+                playerNode = headNode->nextNode;
+            }
             headNode = headNode->nextNode;
             tailNode->nextNode = headNode;
             delete temp;
+            nodeCount--;
             return true;
         }
-        //handle deleting tail
         do {
-
+            if (after-> data.propertyName == name) {
+                if (playerNode == after) {
+                    playerNode = after->nextNode;
+                    space->nextNode = after->nextNode;
+                    if (after == tailNode) {
+                        tailNode = space;
+                    }
+                    delete after;
+                    nodeCount--;
+                    return true;
+                }
+            }
         }
+        while (space != headNode);
         do {
             after = space;
             space = space->nextNode;
-            if (space->propertyName == name) {
+            if (space->data.propertyName == name) {
                 after->nextNode = space->nextNode;
                 delete space;
                 return true;
@@ -225,27 +240,48 @@ private:
     // Advanced Option A (Level 1): findByColor
     // -------------------------------
     vector<string> findByColor(string color) {
-        //use peek
-        vector
-        Node<T> temp = playerNode->nextNode;
-        while ()
-        //create vector<string> matches
-        //while not headNode
-        //if currentnode(name) = nextnode(name)
-        //add to vector
-        //node->next = node
+        vector<string> matches;
+        Node<T>* current = playerNode->nextNode;
+        while (current != headNode) {
+            if (current -> data.propertyColor == color) {
+                matches.push_back(current->data.propertyColor);
+            }
+            current = current->nextNode;
+        }
     // TODO:
     // - Traverse ring exactly once
     // - Collect matching names in vector<string>
     // - Return matches
     cout << "findByColor unwritten" << endl;
-    vector<string> matches;
+
     return matches;
     }
     // -------------------------------
     // Advanced Option B (Level 2): Mirror the Board (Circular Reversal)
     // -------------------------------
     void mirrorBoard() {
+        if (!headNode) {
+            return;
+        }
+        if (headNode == tailNode) {
+            return;
+        }
+        Node<T>* next = nullptr;
+        Node<T>* before = nullptr;
+        Node<T>* current = headNode;
+        do {
+            next = current->nextNode;
+            current->nextNode = before;
+            before = current;
+            current = next;
+        }
+        while (current != headNode);
+        Node<T>* temp = headNode;
+        headNode = tailNode;
+        tailNode = temp;
+
+        tailNode->nextNode = headNode;
+
     // TODO:
     // - Reverse the direction of the circular list by reversing next pointers
     // - Preserve circular structure
@@ -258,13 +294,15 @@ private:
     // -------------------------------
     int countSpaces() {
         int spacecount = 0;
-        for (int i = 0; i < MAX_SPACES; i++) {
-            if (//condition to check for node in space)
-                spacecount++;
+        if (!headNode) {
+            return 0;
         }
-        //start from head
-        //if there is a node
-        //spacecount++
+        Node<T>* temp = headNode;
+        do {
+            spacecount++;
+            temp = temp->nextNode;
+        }
+        while (temp != headNode);
     // TODO:
     // - Must be O(n), traverse exactly once with correct stop condition
     // - Do NOT rely on nodeCount for this method
@@ -275,6 +313,14 @@ private:
     // Cleanup
     // -------------------------------
     void clear() {
+        if (!headNode) {
+            return;
+        }
+        tailNode->nextNode = nullptr;
+
+        Node<T>* current = headNode;
+
+
     // TODO:
     // - Safely delete all nodes
     // - Tip: if tailNode exists, break the cycle first: tailNode->nextNode = nullptr
