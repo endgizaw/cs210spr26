@@ -92,8 +92,7 @@ private:
             return false;
         }
         Node<T>* newNode = new Node<T>(value);
-        nodeCount++;
-        if (nodeCount == 0) {
+        if (!headNode) {
             headNode = tailNode = playerNode = newNode;
             newNode->nextNode=headNode;
         }else {
@@ -101,6 +100,7 @@ private:
             tailNode=newNode;
             tailNode->nextNode=headNode;
         }
+        nodeCount++;
 
         // TODO:
         // - If nodeCount == MAX_SPACES return false (do not corrupt list)
@@ -134,7 +134,7 @@ private:
     // -------------------------------
     void movePlayer(int steps) {
         for (int i = 0; i < steps; i++) {
-            playerNode->nextNode = playerNode;
+            playerNode = playerNode->nextNode;
             if (playerNode == tailNode) {
                 playerNode-> nextNode = headNode;
                 passGoCount++;
