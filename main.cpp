@@ -133,10 +133,12 @@ private:
     // Core C: Traversal-Based Player Movement
     // -------------------------------
     void movePlayer(int steps) {
+        if (!playerNode) {
+            return;
+        }
         for (int i = 0; i < steps; i++) {
             playerNode = playerNode->nextNode;
-            if (playerNode == tailNode) {
-                playerNode-> nextNode = headNode;
+            if (playerNode == headNode) {
                 passGoCount++;
             }
         }
@@ -323,7 +325,7 @@ private:
         while (current != nullptr) {
             Node<T>* temp = current->nextNode;
             delete current;
-            current = next;
+            current = temp;
         }
         nodeCount = 0;
         headNode = nullptr;

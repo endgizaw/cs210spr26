@@ -41,14 +41,14 @@ Each entry may be one of the following:
 ---
 
 ### Entry 2
-**Date:** YYYY-MM-DD  
-**Entry Type:** Bug Fix / Edge Case / Engineering Decision  
-**Task worked on:**  
-**Issue or decision:**  
+**Date:** 2026-03-08  
+**Entry Type:**  Engineering Decision  
+**Task worked on: movePlayer() **  
+**Issue or decision: playerNode was not actually moving / was not handling empty lists / logic for incrementing passGoCount was wrong**  
 **Error message / symptom (if applicable):**  
-**What I tried:**  
-**Fix / resolution (or final decision):**  
-**Commit(s):**  
+**What I tried: was using playerNode->nextNode = playerNode / can not handle empty list / had it as if playerNode == tailNode for passGoCount++**  
+**Fix / resolution (or final decision): removed that line from movePlayer() and now handles empty list and made it playerNode == headNode**  
+**Commit(s): changed it to playerNode == headNode so that it increments after reaching the headNode not tailNode**  
 
 ---
 
