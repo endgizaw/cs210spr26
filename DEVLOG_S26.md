@@ -29,14 +29,14 @@ Each entry may be one of the following:
 ---
 
 ### Entry 1
-**Date:** YYYY-MM-DD  
-**Entry Type:** Bug Fix / Edge Case / Engineering Decision  
-**Task worked on:**  
-**Issue or decision:**  
+**Date:** 2026-03-07  
+**Entry Type:**  Engineering Decision  
+**Task worked on: addSpace()**  
+**Issue or decision: was incrementing before checking if list is empty**  
 **Error message / symptom (if applicable):**  
-**What I tried:**  
-**Fix / resolution (or final decision):**  
-**Commit(s):**  
+**What I tried: had if condition as nodeCount == 0**  
+**Fix / resolution (or final decision): changed it to !headNode and moved nodeCount++ after check**  
+**Commit(s): **  
 
 ---
 
