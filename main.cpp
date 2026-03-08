@@ -320,7 +320,15 @@ private:
 
         Node<T>* current = headNode;
 
-
+        while (current != nullptr) {
+            Node<T>* temp = current->nextNode;
+            delete current;
+            current = next;
+        }
+        nodeCount = 0;
+        headNode = nullptr;
+        tailNode = nullptr;
+        playerNode = nullptr;
     // TODO:
     // - Safely delete all nodes
     // - Tip: if tailNode exists, break the cycle first: tailNode->nextNode = nullptr
