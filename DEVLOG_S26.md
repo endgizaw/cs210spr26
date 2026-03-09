@@ -54,7 +54,7 @@ Each entry may be one of the following:
 
 ### Entry 3
 **Date:** 2026-03-08  
-**Entry Type:**  Engineering Decision  
+**Entry Type:**  Testing Entry
 **Task worked on: addMany()**  
 **Issue or decision: addMany() was not correctly adding nodes or keeping track of new nodes that were being made**  
 **Error message / symptom (if applicable):**  
