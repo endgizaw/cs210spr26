@@ -93,7 +93,7 @@ Each entry may be one of the following:
 **Entry Type:** Bug Fix   
 **Task worked on: findByColor() **  
 **Issue or decision: was not corretly printing properties with matching colors**  
-**Error message / symptom (if applicable):**  
+**Error message/symptom (if applicable):**  
 **What I tried: initially current = playerNode -> nextNode**  
 **Fix / resolution (or final decision): changed current to current = headNode, doing this makes sure that every node is being checked regardless of where playerNode is at**  
 **Commit(s): 17**  
