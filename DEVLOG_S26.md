@@ -77,13 +77,13 @@ Each entry may be one of the following:
 ---
 
 ### Entry 5
-**Date:** YYYY-MM-DD  
-**Entry Type:** Bug Fix / Edge Case / Engineering Decision  
-**Task worked on:**  
-**Issue or decision:**  
+**Date:** 2026-03-08  
+**Entry Type:** Bug Fix   
+**Task worked on: printFromPlayer() **  
+**Issue or decision: was not printing following ndoes**  
 **Error message / symptom (if applicable):**  
-**What I tried:**  
-**Fix / resolution (or final decision):**  
+**What I tried: I had missunderstood the usage of the function and calculated how many spaces were left in the list from the playerNode**  
+**Fix / resolution (or final decision): redid funcsiton so that it displays the nodes ahead of player depending on what input count is**  
 **Commit(s):**  
 
 ---

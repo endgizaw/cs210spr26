@@ -173,13 +173,16 @@ private:
     // Core D: Controlled Board Display
     // -------------------------------
     void printFromPlayer(int count) {
-        count = 1;
         if (!playerNode) {
             return;
         }
-        Node<T>* temp = playerNode->nextNode;
-        while (temp != headNode) {
-            count++;
+        Node<T>* temp = playerNode;
+        for (int i = 0; i < count; i++) {
+            cout << i + 1 << " ";
+            cout << temp->data.propertyName << ", ";
+            cout << temp->data.propertyColor << ", ";
+            cout << temp->data.value << ", ";
+            cout << temp->data.rent << endl;
             temp = temp->nextNode;
         }
         // TODO:
@@ -187,7 +190,6 @@ private:
         // - Must not infinite loop
         // - Must handle empty list
         // - Output must be deterministic and readable
-        cout << count << endl;
     }
     // Optional helper: print full board once (one full cycle)
     void printBoardOnce() {
@@ -384,7 +386,26 @@ int main() {
         MonopolySpace("Pacific Avenue", "Green", 0, 0),
         MonopolySpace("North Carolina Avenue", "Green", 0, 0),
         MonopolySpace("Pennsylvania Avenue", "Green", 0, 0),
-
+        MonopolySpace("Park Place", "Dark Blue", 0, 0),
+        MonopolySpace("Boardwalk", "Dark Blue", 0, 0),
+        MonopolySpace("Sea World", "Purple", 0, 0),
+        MonopolySpace("Belmont Park", "Purple", 0, 0),
+        MonopolySpace("SeaPort Village", "Purple", 0, 0),
+        MonopolySpace("Balboa Park", "Purple", 0, 0),
+        MonopolySpace("San Diego Zoo", "Indigo", 0, 0),
+        MonopolySpace("Safari Park", "Indigo", 0, 0),
+        MonopolySpace("Santee Lake", "Indigo", 0, 0),
+        MonopolySpace("San Diego River", "Black", 0, 0),
+        MonopolySpace("Gas Lamp", "Black", 0, 0),
+        MonopolySpace("Little Italy", "Black", 0, 0),
+        MonopolySpace("Cabrillo National Monument", "White", 0, 0),
+        MonopolySpace("Del Mar Fair", "White", 0, 0),
+        MonopolySpace("Lego Land", "White", 0, 0),
+        MonopolySpace("Petco Park", "Cream", 0, 0),
+        MonopolySpace("Coronado Bridge", "Cream", 0, 0),
+        MonopolySpace("Hotel Circle", "Cream", 0, 0),
+        MonopolySpace("Midway Museum ", "Cream", 0, 0),
+        MonopolySpace("Misison Beach", "Cream", 0, 0),
     };
     board.addMany(spaces);
     // -------------------------------
