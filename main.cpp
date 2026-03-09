@@ -142,7 +142,7 @@ private:
         // - Stop exactly when you reach MAX_SPACES
         // - Return number successfully added
         // - Do not corrupt pointers if capacity is exceeded
-        cout << "addMany written" << endl;
+        cout << "Board Constructed" << endl;
     return temp;
     }
     // -------------------------------
@@ -164,7 +164,7 @@ private:
         // - Detect and track passing GO:
         // increment passGoCount when a move crosses from tail back to head
         // - Must handle empty list safely
-        cout << "movePlayer written" << endl;
+        cout << "Player Moved Spaces!" << endl;
     }
     int getPassGoCount() {
         return passGoCount;
@@ -187,7 +187,7 @@ private:
         // - Must not infinite loop
         // - Must handle empty list
         // - Output must be deterministic and readable
-        cout << count << " spaces from player to end!" << endl;
+        cout << count << endl;
     }
     // Optional helper: print full board once (one full cycle)
     void printBoardOnce() {
@@ -260,17 +260,16 @@ private:
     vector<string> findByColor(string color) {
         vector<string> matches;
         Node<T>* current = playerNode->nextNode;
-        while (current != headNode) {
+        do {
             if (current -> data.propertyColor == color) {
-                matches.push_back(current->data.propertyColor);
+                matches.push_back(current->data.propertyName);
             }
             current = current->nextNode;
-        }
+        } while (current != headNode);
     // TODO:
     // - Traverse ring exactly once
     // - Collect matching names in vector<string>
     // - Return matches
-    cout << "findByColor written" << endl;
 
     return matches;
     }
@@ -351,7 +350,7 @@ private:
     // - Safely delete all nodes
     // - Tip: if tailNode exists, break the cycle first: tailNode->nextNode = nullptr
     // - Then delete like a normal singly linked list
-    cout << "clear written" << endl;
+    cout << "Cleared Board!" << endl;
     }
 };
 // -------------------------------

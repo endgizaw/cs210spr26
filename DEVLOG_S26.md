@@ -66,12 +66,12 @@ Each entry may be one of the following:
 
 ### Entry 4
 **Date:** 2026-03-08  
-**Entry Type:** Bug Fix / Edge Case / Engineering Decision  
-**Task worked on:**  
-**Issue or decision:**  
-**Error message / symptom (if applicable):**  
-**What I tried:**  
-**Fix / resolution (or final decision):**  
+**Entry Type:** Bug Fix   
+**Task worked on: findByColor()**  
+**Issue or decision: was not properly returning names of properties that had the same color**  
+**Error message/symptom (if applicable): would only return color or nothing at all**  
+**What I tried: at first I had set up my function noting the color of the property but not its name**  
+**Fix / resolution (or final decision): made it able to handle empty list and changed current->data.propertyColor to current->data.propertyName**  
 **Commit(s):**  
 
 ---
