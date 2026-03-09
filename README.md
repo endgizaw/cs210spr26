@@ -6,6 +6,11 @@
 
 This Monooly board is constructed by utilizing a circular linked list made up of 40 nodes, which all have their own names, colors, values, and rent.
 
+The game can be played by running the program and upon running 2 dice will be rolled determining your move, add up both dice and that number is how many spaces you can move foward. As the player moves foward and reaches the end of the board because a circular linked list is being used the player will start at the headNode after the tailNode. 
+
+
+
+addSpace() - adds a space to the board
 
 addMany() - adds all 40 spaces to the board 
 
