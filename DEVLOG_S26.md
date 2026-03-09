@@ -36,7 +36,7 @@ Each entry may be one of the following:
 **Error message / symptom (if applicable):**  
 **What I tried: had if condition as nodeCount == 0**  
 **Fix / resolution (or final decision): changed it to !headNode and moved nodeCount++ after check**  
-**Commit(s): **  
+**Commit(s): 10, 11**  
 
 ---
 
@@ -48,7 +48,7 @@ Each entry may be one of the following:
 **Error message / symptom (if applicable):**  
 **What I tried: was using playerNode->nextNode = playerNode / can not handle empty list / had it as if playerNode == tailNode for passGoCount++**  
 **Fix / resolution (or final decision): removed that line from movePlayer() and now handles empty list and made it playerNode == headNode, changed it to playerNode == headNode so that it increments after reaching the headNode not tailNode**  
-**Commit(s): **  
+**Commit(s): 12**  
 
 ---
 
@@ -60,7 +60,7 @@ Each entry may be one of the following:
 **Error message / symptom (if applicable):**  
 **What I tried: only had addMany as a while loop but was only adding nodes and not maintaining the circular loop**  
 **Fix / resolution (or final decision): redid entire function to handle full list as well as maintaining the circular list**  
-**Commit(s):**  
+**Commit(s): 13, 14**  
 
 ---
 
@@ -72,7 +72,7 @@ Each entry may be one of the following:
 **Error message/symptom (if applicable): would only return color or nothing at all**  
 **What I tried: at first I had set up my function noting the color of the property but not its name**  
 **Fix / resolution (or final decision): made it able to handle empty list and changed current->data.propertyColor to current->data.propertyName**  
-**Commit(s):**  
+**Commit(s): 15**  
 
 ---
 
@@ -84,7 +84,7 @@ Each entry may be one of the following:
 **Error message / symptom (if applicable):**  
 **What I tried: I had missunderstood the usage of the function and calculated how many spaces were left in the list from the playerNode**  
 **Fix / resolution (or final decision): redid funcsiton so that it displays the nodes ahead of player depending on what input count is**  
-**Commit(s):**  
+**Commit(s): 16**  
 
 ---
 
@@ -96,4 +96,4 @@ Each entry may be one of the following:
 **Error message / symptom (if applicable):**  
 **What I tried: initially current = playerNode -> nextNode**  
 **Fix / resolution (or final decision): changed current to current = headNode, doing this makes sure that every node is being checked regardless of where playerNode is at**  
-**Commit(s):**  
+**Commit(s): 17**  
