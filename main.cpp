@@ -261,7 +261,7 @@ private:
     // -------------------------------
     vector<string> findByColor(string color) {
         vector<string> matches;
-        Node<T>* current = playerNode->nextNode;
+        Node<T>* current = headNode;
         do {
             if (current -> data.propertyColor == color) {
                 matches.push_back(current->data.propertyName);
@@ -440,10 +440,11 @@ int main() {
     // Option A examples:
     // board.removeByName("Baltic Avenue");
     // vector<string> brownProps = board.findByColor("Brown");
-    board.removeByName("Pacific Avenue");
-    vector<string> blueProps = board.findByColor("Light Blue");
-    for (int i = 0; i < blueProps.size(); i++) {
-        cout << blueProps[i] << endl;
+
+    vector<string> result = board.findByColor("Cream");
+    cout << "Results for properties with Cream color: " << endl;
+    for (int i = 0; i < result.size(); i++) {
+        cout << i + 1 << " " << result[i] << endl;
     }
     //
     // Option B example:
