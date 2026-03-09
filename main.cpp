@@ -158,13 +158,13 @@ private:
                 passGoCount++;
             }
         }
+        cout << "Player Moved " << steps << " Spaces!" << endl;
         // TODO:
         // - Move playerNode forward 'steps' times, node-by-node
         // - Wrap naturally because list is circular
         // - Detect and track passing GO:
         // increment passGoCount when a move crosses from tail back to head
         // - Must handle empty list safely
-        cout << "Player Moved Spaces!" << endl;
     }
     int getPassGoCount() {
         return passGoCount;
@@ -405,7 +405,7 @@ int main() {
         MonopolySpace("Coronado Bridge", "Cream", 0, 0),
         MonopolySpace("Hotel Circle", "Cream", 0, 0),
         MonopolySpace("Midway Museum ", "Cream", 0, 0),
-        MonopolySpace("Misison Beach", "Cream", 0, 0),
+        MonopolySpace("Mission Beach", "Cream", 0, 0),
     };
     board.addMany(spaces);
     // -------------------------------
@@ -440,7 +440,10 @@ int main() {
     // Option A examples:
     // board.removeByName("Baltic Avenue");
     // vector<string> brownProps = board.findByColor("Brown");
-
+    cout << endl;
+    board.removeByName("Hotel Circle");
+    cout << "Removed property Hotel Circle!" << endl;
+    cout << endl;
     vector<string> result = board.findByColor("Cream");
     cout << "Results for properties with Cream color: " << endl;
     for (int i = 0; i < result.size(); i++) {
@@ -449,6 +452,7 @@ int main() {
     //
     // Option B example:
     // board.mirrorBoard();
+    cout << endl;
     board.clear();
 return 0;
 }
