@@ -53,19 +53,19 @@ Each entry may be one of the following:
 ---
 
 ### Entry 3
-**Date:** YYYY-MM-DD  
-**Entry Type:** Bug Fix / Edge Case / Engineering Decision  
-**Task worked on:**  
-**Issue or decision:**  
+**Date:** 2026-03-08  
+**Entry Type:**  Engineering Decision  
+**Task worked on: addMany()**  
+**Issue or decision: addMany() was not correctly adding nodes or keeping track of new nodes that were being made**  
 **Error message / symptom (if applicable):**  
-**What I tried:**  
-**Fix / resolution (or final decision):**  
+**What I tried: only had addMany as a while loop but was only adding nodes and not maintaining the circular loop**  
+**Fix / resolution (or final decision): redid entire function to handle full list as well as maintaining the circular list**  
 **Commit(s):**  
 
 ---
 
 ### Entry 4
-**Date:** YYYY-MM-DD  
+**Date:** 2026-03-08  
 **Entry Type:** Bug Fix / Edge Case / Engineering Decision  
 **Task worked on:**  
 **Issue or decision:**  

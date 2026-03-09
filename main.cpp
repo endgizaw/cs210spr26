@@ -116,17 +116,33 @@ private:
     // -------------------------------
     int addMany(vector<T> values) {
         int temp = 0;
-        while (nodeCount < MAX_SPACES) {
-            Node<T>* newNode = new Node<T>(values);
-            temp++;
-            nodeCount++;
+        if (nodeCount >= MAX_SPACES) {
+            return false;
         }
+        for (int i = 0; i < values.size(); i++) {
+            if (nodeCount >= MAX_SPACES) {
+                break;
+            }
+            Node<T>* newNode = new Node<T>(values[i]);
+            if (!headNode) {
+                headNode = tailNode = playerNode = newNode;
+                newNode->nextNode=headNode;
+            } else {
+                tailNode->nextNode=newNode;
+                tailNode=newNode;
+                tailNode->nextNode=headNode;
+            }
+            nodeCount++;
+            temp++;
+
+        }
+
         // TODO:
         // - Add sequentially until full
         // - Stop exactly when you reach MAX_SPACES
         // - Return number successfully added
         // - Do not corrupt pointers if capacity is exceeded
-        cout << "addMany unwritten" << endl;
+        cout << "addMany written" << endl;
     return temp;
     }
     // -------------------------------
@@ -148,7 +164,7 @@ private:
         // - Detect and track passing GO:
         // increment passGoCount when a move crosses from tail back to head
         // - Must handle empty list safely
-        cout << "movePlayer unwritten" << endl;
+        cout << "movePlayer written" << endl;
     }
     int getPassGoCount() {
         return passGoCount;
@@ -178,7 +194,7 @@ private:
         addMany(MAX_SPACES);
     // TODO:
     // - Traverse exactly one full cycle and print each node.
-    cout << "printBoardOnce unwritten" << endl;
+    cout << "printBoardOnce written" << endl;
     }
     // -------------------------------
     // Advanced Option A (Level 1): removeByName
@@ -235,7 +251,7 @@ private:
     // - Maintain circular link tail->next=head
     // - If playerNode points to deleted node, move playerNode to a safe node
     // - nodeCount--
-    cout << "removeByName unwritten" << endl;
+    cout << "removeByName written" << endl;
     return false;
     }
     // -------------------------------
@@ -254,7 +270,7 @@ private:
     // - Traverse ring exactly once
     // - Collect matching names in vector<string>
     // - Return matches
-    cout << "findByColor unwritten" << endl;
+    cout << "findByColor written" << endl;
 
     return matches;
     }
@@ -289,7 +305,7 @@ private:
     // - Preserve circular structure
     // - Correctly handle empty list and single-node list
     // - Player cursor must remain on the same logical space after reversal
-    cout << "mirrorBoard unwritten" << endl;
+    cout << "mirrorBoard written" << endl;
     }
     // -------------------------------
     // Edge-case helper: countSpaces O(n)
@@ -308,7 +324,7 @@ private:
     // TODO:
     // - Must be O(n), traverse exactly once with correct stop condition
     // - Do NOT rely on nodeCount for this method
-    cout << "countSpaces unwritten" << endl;
+    cout << "countSpaces written" << endl;
     return spacecount;
     }
     // -------------------------------
@@ -335,7 +351,7 @@ private:
     // - Safely delete all nodes
     // - Tip: if tailNode exists, break the cycle first: tailNode->nextNode = nullptr
     // - Then delete like a normal singly linked list
-    cout << "clear unwritten" << endl;
+    cout << "clear written" << endl;
     }
 };
 // -------------------------------
@@ -347,6 +363,31 @@ int rollDice2to12() {
 int main() {
     srand(static_cast<unsigned>(time(nullptr)));
     CircularLinkedList<MonopolySpace> board;
+    vector<MonopolySpace> spaces = {
+        MonopolySpace("GO", "None", 0, 0),
+        MonopolySpace("Mediterranean Avenue", "Brown", 0, 0),
+        MonopolySpace("Baltic Avenue", "Brown", 0, 0),
+        MonopolySpace("Oriental Avenue", "Light Blue", 0, 0),
+        MonopolySpace("Vermont Avenue", "Light Blue", 0, 0),
+        MonopolySpace("Connecticut Avenue", "Light Blue", 0, 0),
+        MonopolySpace("St. Charles Place", "Pink", 0, 0),
+        MonopolySpace("States Avenue", "Pink", 0, 0),
+        MonopolySpace("Virginia Avenue", "Pink", 0, 0),
+        MonopolySpace("St. James Place", "Orange", 0, 0),
+        MonopolySpace("Tennessee Avenue", "Orange", 0, 0),
+        MonopolySpace("New York Avenue", "Orange", 0, 0),
+        MonopolySpace("Kentucky Avenue", "Red", 0, 0),
+        MonopolySpace("Indiana Avenue", "Red", 0, 0),
+        MonopolySpace("Illinois Avenue", "Red", 0, 0),
+        MonopolySpace("Atlantic Avenue", "Yellow", 0, 0),
+        MonopolySpace("Ventnor Avenue", "Yellow", 0, 0),
+        MonopolySpace("Marvin Gardens", "Yellow", 0, 0),
+        MonopolySpace("Pacific Avenue", "Green", 0, 0),
+        MonopolySpace("North Carolina Avenue", "Green", 0, 0),
+        MonopolySpace("Pennsylvania Avenue", "Green", 0, 0),
+
+    };
+    board.addMany(spaces);
     // -------------------------------
     // Board Construction Phase
     // -------------------------------
@@ -362,7 +403,6 @@ int main() {
     //
     // NOTE: This starter calls addSpace once to show the intended API,
     // but your final submission should build a meaningful board.
-    board.addSpace(MonopolySpace("GO", "None", 0, 0));
     // -------------------------------
     // Playable Traversal Loop
     // -------------------------------
@@ -380,8 +420,14 @@ int main() {
     // Option A examples:
     // board.removeByName("Baltic Avenue");
     // vector<string> brownProps = board.findByColor("Brown");
+    board.removeByName("Pacific Avenue");
+    vector<string> blueProps = board.findByColor("Light Blue");
+    for (int i = 0; i < blueProps.size(); i++) {
+        cout << blueProps[i] << endl;
+    }
     //
     // Option B example:
     // board.mirrorBoard();
+    board.clear();
 return 0;
 }
